@@ -1,8 +1,0 @@
-src/
-.eslintrc.js
-.gitignore
-.npmignore
-.travis.yml
-index.html
-prettier.config.js
-webpack.config.js
