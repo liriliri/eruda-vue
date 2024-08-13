@@ -1,3 +1,5 @@
+const { initDevtools } = require('./devtools')
+
 module.exports = function (eruda) {
   let { evalCss } = eruda.util
 
@@ -10,6 +12,8 @@ module.exports = function (eruda) {
     init($el, container) {
       super.init($el, container)
       $el.html('<div class="eruda-tip">Put whatever you want here:)</div>')
+
+      initDevtools()
     }
     show() {
       super.show()

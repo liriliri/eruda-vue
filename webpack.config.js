@@ -18,6 +18,14 @@ module.exports = (env, argv) => {
       },
       port: 8080,
     },
+    resolve: {
+      extensions: ['.js'],
+      alias: {
+        '@front': '@vue-devtools/app-frontend/src',
+        '@back': '@vue-devtools/app-backend-core/lib',
+        '@utils': '@vue-devtools/shared-utils/lib',
+      }
+    },
     output: {
       path: __dirname,
       filename: 'eruda-vue.js',
