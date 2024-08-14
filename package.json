@@ -3,14 +3,20 @@
   "version": "1.0.0",
   "main": "eruda-vue.js",
   "files": [
+    "build",
     "eruda-vue.js",
     "eruda-vue.js.map"
   ],
   "scripts": {
+    "init": "git submodule init && git submodule update && npm install --force && cd vue-devtools && yarn && npm run build && npm run init:front",
+    "init:front": "npm run build:front && npm run copy:front",
+    "build:front": "cd vue-devtools/packages/shell-eruda && npm run build",
+    "copy:front": "lsla shx cp -r vue-devtools/packages/shell-eruda/build build",
     "dev": "webpack-dev-server --host 0.0.0.0 --mode development",
     "build": "webpack --mode production",
     "ci": "npm run lint && npm run build",
-    "lint": "eslint src/**/*.js"
+    "lint": "eslint src/**/*.js",
+    "format": "lsla prettier \"src/*.{js,scss}\" \"*.{json,html}\" --write"
   },
   "keywords": [
     "eruda",
@@ -18,13 +24,16 @@
   ],
   "author": "",
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
     "@babel/core": "^7.21.3",
-    "babel-loader": "^9.1.2",
     "@babel/plugin-transform-runtime": "^7.21.0",
     "@babel/preset-env": "^7.20.2",
+    "autoprefixer": "^10.4.14",
+    "babel-loader": "^9.1.2",
     "css-loader": "^3.4.2",
     "eruda": "^3.2.0",
+    "eslint": "^8.57.0",
+    "licia": "^1.41.1",
+    "path-browserify": "^1.0.1",
     "postcss": "^8.4.21",
     "postcss-class-prefix": "^0.3.0",
     "postcss-loader": "^7.0.2",
@@ -32,8 +41,7 @@
     "sass-loader": "^14.2.1",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^4.12.0",
-    "eslint": "^8.57.0"
+    "webpack-dev-server": "^4.12.0"
   },
   "workspaces": [
     "vue-devtools/packages/*"

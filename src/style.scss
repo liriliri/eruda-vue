@@ -1,8 +1,12 @@
 .vue {
+  padding: 0;
+  .tip {
     padding: 10px;
-    .tip {
-        padding: 10px;
-        background: #fff;
-        color: #263238;
-    }
+    background: #fff;
+    color: #263238;
+  }
+  .vue-devtools {
+    width: 100%;
+    height: 100%;
+  }
 }

@@ -18,8 +18,16 @@ module.exports = (env, argv) => {
       },
       port: 8080,
     },
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000,
+      ignored: /node_modules/,
+    },
     resolve: {
       extensions: ['.js'],
+      fallback: {
+        path: require.resolve('path-browserify'),
+      },
       alias: {
         '@front': '@vue-devtools/app-frontend/src',
         '@back': '@vue-devtools/app-backend-core/lib',

@@ -1,4 +1,4 @@
-const { initDevtools } = require('./devtools')
+const { initDevtools } = require('./back')
 
 module.exports = function (eruda) {
   let { evalCss } = eruda.util
@@ -11,9 +11,10 @@ module.exports = function (eruda) {
     }
     init($el, container) {
       super.init($el, container)
-      $el.html('<div class="eruda-tip">Put whatever you want here:)</div>')
+      $el.html('<iframe class="eruda-vue-devtools"></iframe>')
+      const iframe = $el.find('.eruda-vue-devtools').get(0)
 
-      initDevtools()
+      initDevtools(iframe)
     }
     show() {
       super.show()

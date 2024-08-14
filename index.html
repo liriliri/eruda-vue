@@ -1,14 +1,35 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-        <title>Eruda-vue</title>
-    </head>
-    <body>
-        <script src="node_modules/eruda/eruda.js"></script>
-        <script>eruda.init({tool: []});</script>
-        <script src="assets/eruda-vue.js"></script>
-        <script>eruda.add(erudaVue).show('vue').show();</script>
-    </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <title>Eruda-vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
+  <body>
+    <div id="app">{{ message }}</div>
+    <script>
+      const { createApp, ref } = Vue
+
+      createApp({
+        setup() {
+          const message = ref('Hello vue!')
+          return {
+            message,
+          }
+        },
+      }).mount('#app')
+    </script>
+    <script src="node_modules/eruda/eruda.js"></script>
+    <script>
+      eruda.init({ tool: ['console'] })
+    </script>
+    <script src="assets/eruda-vue.js"></script>
+    <script>
+      eruda.add(erudaVue).show('vue').show()
+    </script>
+  </body>
 </html>
