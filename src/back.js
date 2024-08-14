@@ -2,6 +2,7 @@ import { installHook } from '@back/hook'
 import { initBackend } from '@back'
 import { Bridge } from '@utils/bridge'
 import createUrl from 'licia/createUrl'
+import devtools from 'raw-loader!./devtools.js'
 
 installHook(window)
 
@@ -25,7 +26,7 @@ export function initDevtools(iframe) {
       </head>
       <body>
         <div id="app"></div>
-        <script src="http://localhost:8080/build/devtools.js"></script>
+        <script>${devtools}</script>
       </body>
     </html>`,
     {

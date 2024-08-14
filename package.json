@@ -3,15 +3,14 @@
   "version": "1.0.0",
   "main": "eruda-vue.js",
   "files": [
-    "build",
     "eruda-vue.js",
     "eruda-vue.js.map"
   ],
   "scripts": {
-    "init": "git submodule init && git submodule update && npm install --force && cd vue-devtools && yarn && npm run build && npm run init:front",
+    "init": "git submodule init && git submodule update && npm install --force && cd vue-devtools && yarn && npm run build",
     "init:front": "npm run build:front && npm run copy:front",
     "build:front": "cd vue-devtools/packages/shell-eruda && npm run build",
-    "copy:front": "lsla shx cp -r vue-devtools/packages/shell-eruda/build build",
+    "copy:front": "lsla shx cp -r vue-devtools/packages/shell-eruda/build/devtools.js src/devtools.js",
     "dev": "webpack-dev-server --host 0.0.0.0 --mode development",
     "build": "webpack --mode production",
     "ci": "npm run lint && npm run build",
@@ -37,6 +36,7 @@
     "postcss": "^8.4.21",
     "postcss-class-prefix": "^0.3.0",
     "postcss-loader": "^7.0.2",
+    "raw-loader": "^4.0.2",
     "sass": "^1.77.8",
     "sass-loader": "^14.2.1",
     "webpack": "^5.93.0",
