@@ -1,8 +1,9 @@
 import { installHook } from '@back/hook'
 import { initBackend } from '@back'
 import { Bridge } from '@utils/bridge'
+import { SharedData } from '@utils/shared-data'
 import createUrl from 'licia/createUrl'
-import devtools from 'raw-loader!./devtools.js'
+import devtools from 'raw-loader!./devtools.txt'
 
 installHook(window)
 
@@ -17,6 +18,8 @@ export function initDevtools(iframe) {
   })
   initBackend(bridge)
 
+  const devtoolsSrc = createUrl(devtools, { type: 'application/javascript' })
+
   const devtoolsUrl = createUrl(
     `<!DOCTYPE html>
     <html>
@@ -26,7 +29,7 @@ export function initDevtools(iframe) {
       </head>
       <body>
         <div id="app"></div>
-        <script>${devtools}</script>
+        <script src="${devtoolsSrc}"></script>
       </body>
     </html>`,
     {
@@ -36,4 +39,8 @@ export function initDevtools(iframe) {
 
   iframe.__vdevtools__injected = true
   iframe.src = devtoolsUrl
+}
+
+export function setTheme(value) {
+  SharedData.theme = value
 }

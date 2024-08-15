@@ -2,6 +2,7 @@
   "name": "eruda-vue",
   "version": "1.0.0",
   "main": "eruda-vue.js",
+  "description": "Eruda plugin for Vue",
   "files": [
     "eruda-vue.js",
     "eruda-vue.js.map"
@@ -10,7 +11,7 @@
     "init": "git submodule init && git submodule update && npm install --force && cd vue-devtools && yarn && npm run build",
     "init:front": "npm run build:front && npm run copy:front",
     "build:front": "cd vue-devtools/packages/shell-eruda && npm run build",
-    "copy:front": "lsla shx cp -r vue-devtools/packages/shell-eruda/build/devtools.js src/devtools.js",
+    "copy:front": "lsla shx cp -r vue-devtools/packages/shell-eruda/build/devtools.js src/devtools.txt",
     "dev": "webpack-dev-server --host 0.0.0.0 --mode development",
     "build": "webpack --mode production",
     "ci": "npm run lint && npm run build",
@@ -19,9 +20,15 @@
   },
   "keywords": [
     "eruda",
+    "vue",
     "plugin"
   ],
-  "author": "",
+  "author": "redhoodsu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/liriliri/eruda-vue/issues"
+  },
+  "homepage": "https://github.com/liriliri/eruda-vue#readme",
   "devDependencies": {
     "@babel/core": "^7.21.3",
     "@babel/plugin-transform-runtime": "^7.21.0",

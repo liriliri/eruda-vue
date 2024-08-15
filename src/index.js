@@ -1,4 +1,4 @@
-const { initDevtools } = require('./back')
+const { initDevtools, setTheme } = require('./back')
 
 module.exports = function (eruda) {
   let { evalCss } = eruda.util
@@ -15,6 +15,9 @@ module.exports = function (eruda) {
       const iframe = $el.find('.eruda-vue-devtools').get(0)
 
       initDevtools(iframe)
+
+      setTheme(this._getTheme())
+      eruda.get().config.on('change', this._onThemeChange)
     }
     show() {
       super.show()
@@ -25,6 +28,14 @@ module.exports = function (eruda) {
     destroy() {
       super.destroy()
       evalCss.remove(this._style)
+    }
+    _getTheme() {
+      return eruda.util.isDarkTheme() ? 'dark' : 'light'
+    }
+    _onThemeChange = (name) => {
+      if (name === 'theme') {
+        setTheme(this._getTheme())
+      }
     }
   }
 
