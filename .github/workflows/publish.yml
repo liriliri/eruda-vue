@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - name: Build eruda-features
+      - name: Build eruda-vue
         run: |
           npm install -g @liriliri/lsla
           npm install -g yarn
