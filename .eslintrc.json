@@ -10,6 +10,9 @@
     "sourceType": "module"
   },
   "extends": "eslint:recommended",
+  "globals": {
+    "process": "readonly"
+  },
   "rules": {
     "indent": ["error", 2],
     "quotes": ["error", "single"],

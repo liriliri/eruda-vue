@@ -7,14 +7,29 @@ import devtools from 'raw-loader!./devtools.txt'
 
 installHook(window)
 
+let theme = 'auto'
+let shareDataLoaded = false
+
 export function initDevtools(iframe) {
   const bridge = new Bridge({
     listen(fn) {
-      window.addEventListener('message', (evt) => fn(evt.data))
+      window.addEventListener('message', (evt) => {
+        if (process.env.NODE_ENV !== 'production') {
+          console.log('devtools -> backend', evt.data)
+        }
+        fn(evt.data)
+      })
     },
     send(data) {
+      if (process.env.NODE_ENV !== 'production') {
+        console.log('backend -> devtools', data)
+      }
       iframe.contentWindow.postMessage(data, '*')
     },
+  })
+  bridge.on('shared-data:load-complete', () => {
+    shareDataLoaded = true
+    setTheme(theme)
   })
   initBackend(bridge)
 
@@ -42,5 +57,8 @@ export function initDevtools(iframe) {
 }
 
 export function setTheme(value) {
-  SharedData.theme = value
+  theme = value
+  if (shareDataLoaded) {
+    SharedData.theme = value
+  }
 }
