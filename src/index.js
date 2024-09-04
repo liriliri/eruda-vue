@@ -1,4 +1,4 @@
-const { initDevtools, setTheme } = require('./back')
+const { initDevtools, setTheme, installHook, forceEnable } = require('./back')
 
 module.exports = function (eruda) {
   let { evalCss } = eruda.util
@@ -14,6 +14,8 @@ module.exports = function (eruda) {
       $el.html('<iframe class="eruda-vue-devtools"></iframe>')
       const iframe = $el.find('.eruda-vue-devtools').get(0)
 
+      installHook()
+      forceEnable()
       initDevtools(iframe)
 
       setTheme(this._getTheme())

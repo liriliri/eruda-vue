@@ -1,6 +1,6 @@
 {
   "name": "eruda-vue",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "main": "eruda-vue.js",
   "description": "Eruda plugin for Vue",
   "files": [

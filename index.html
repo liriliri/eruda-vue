@@ -7,7 +7,7 @@
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
     />
     <title>Eruda-vue</title>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
   </head>
   <body>
     <div id="app">{{ message }}</div>
@@ -25,6 +25,9 @@
     </script>
     <script src="node_modules/eruda/eruda.js"></script>
     <script>
+      setTimeout(() => {
+        console.log(__VUE_DEVTOOLS_GLOBAL_HOOK__)
+      }, 3000)
       eruda.init({ tool: ['console'] })
     </script>
     <script src="assets/eruda-vue.js"></script>

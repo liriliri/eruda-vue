@@ -89,7 +89,12 @@ module.exports = (env, argv) => {
         },
       ],
     },
-    plugins: [new webpack.BannerPlugin(banner)],
+    plugins: [
+      new webpack.optimize.LimitChunkCountPlugin({
+        maxChunks: 1,
+      }),
+      new webpack.BannerPlugin(banner)
+    ],
   }
 
   if (argv.mode === 'production') {
