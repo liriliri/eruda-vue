@@ -1,3 +1,7 @@
+## v1.1.1 (5 Sep 2024)
+
+* fix: safari
+
 ## v1.1.0 (4 Sep 2024)
 
 * feat: force dev mode
